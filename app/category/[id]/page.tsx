@@ -29,16 +29,21 @@ export default async function MealCategoryPage({
             className="flex flex-col items-center gap-2 col-span-12 px-4 py-6 md:col-span-6 lg:col-span-3 bg-amber-200 text-black"
           >
             <div>
-              <Image
-                src={m.strMealThumb}
-                alt={m.strMeal}
-                width={200}
-                height={200}
-                loading="eager"
-                className="w-full h-auto"
-              />
+              <Link href={`/meal/${m.idMeal}`}>
+                <Image
+                  src={m.strMealThumb}
+                  alt={m.strMeal}
+                  width={200}
+                  height={200}
+                  loading="eager"
+                  className="w-full h-auto"
+                />
+              </Link>
             </div>
-            <p className="text-center">{m.strMeal}</p>
+
+            <Link href={`/meal/${m.idMeal}`}>
+              <p className="text-center">{m.strMeal}</p>
+            </Link>
           </div>
         ))}
       </div>
