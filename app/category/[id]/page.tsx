@@ -1,5 +1,5 @@
+import { CategoryMealCard } from "@/app/components/CategoryMealCard";
 import { Meals } from "@/app/models/Meals";
-import Image from "next/image";
 import Link from "next/link";
 
 type MealCategoryPageProps = {
@@ -20,31 +20,11 @@ export default async function MealCategoryPage({
   return (
     <>
       <Link href={"/"}>Home</Link>
-      <h1 className="text-2xl">{id} dishes</h1>
+      <h1>{id} dishes</h1>
 
       <div className="grid grid-cols-12 gap-4 w-full">
-        {data.meals.map((m) => (
-          <div
-            key={m.idMeal}
-            className="flex flex-col items-center gap-2 col-span-12 px-4 py-6 md:col-span-6 lg:col-span-3 bg-amber-200 text-black"
-          >
-            <div>
-              <Link href={`/meal/${m.idMeal}`}>
-                <Image
-                  src={m.strMealThumb}
-                  alt={m.strMeal}
-                  width={200}
-                  height={200}
-                  loading="eager"
-                  className="w-full h-auto"
-                />
-              </Link>
-            </div>
-
-            <Link href={`/meal/${m.idMeal}`}>
-              <p className="text-center">{m.strMeal}</p>
-            </Link>
-          </div>
+        {data.meals.map((meal) => (
+          <CategoryMealCard key={meal.idMeal} meal={meal} />
         ))}
       </div>
     </>
