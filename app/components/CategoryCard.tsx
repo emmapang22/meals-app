@@ -13,7 +13,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
       aria-label={category.strCategory}
     >
       <Link href={`/category/${category.strCategory}`} className="">
-        <div className="flex flex-col items-center  gap-2 py-4 px-6 bg-white text-black rounded-xl ">
+        <div className="flex flex-col items-center  gap-2 py-4 px-6 bg-white text-black rounded-xl border-3 border-black">
           <div className="">
             <Image
               src={category.strCategoryThumb}

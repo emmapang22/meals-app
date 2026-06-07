@@ -8,7 +8,7 @@ type CategoryMealCardProps = {
 
 export const CategoryMealCard = ({ meal }: CategoryMealCardProps) => {
   return (
-    <div className="flex flex-col items-center gap-2 col-span-12 md:col-span-6 lg:col-span-3 rounded-xl text-white relative hover:filter hover:bg-[#ffffff89]">
+    <div className="flex flex-col items-center gap-2 col-span-12 md:col-span-4 lg:col-span-3 rounded-xl text-white relative border-3 border-black">
       <Link href={`/meal/${meal.idMeal}`}>
         <div className="">
           <Image

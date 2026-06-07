@@ -9,9 +9,12 @@ export const MealTags = ({ meal }: MealTagsProps) => {
     return (
       <div className="flex gap-2">
         {meal.strTags.split(",").map((tag) => (
-          <div key={tag} className="border border-white px-4 py-2">
+          <span
+            key={tag}
+            className="bg-[#f0c56d] text-[15px] border-2 font-medium px-4 py-1 rounded-full"
+          >
             {tag}
-          </div>
+          </span>
         ))}
       </div>
     );

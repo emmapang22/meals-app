@@ -4,5 +4,5 @@ export type MealExtended = Meal & {
   strCategory: string;
   strInstructions: string;
   strTags: string;
-  strYoutube?: string;
+  strYoutube: string;
 };

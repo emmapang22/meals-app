@@ -14,7 +14,6 @@ export default async function MealDetailPage({ params }: MealDetailPageProps) {
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
   );
   const data: DetailMeals = await response.json();
-  console.log(data);
 
   return (
     <>
@@ -29,7 +28,7 @@ export default async function MealDetailPage({ params }: MealDetailPageProps) {
               <span>
                 <Link
                   href={`/category/${m.strCategory}`}
-                  className="text-white"
+                  className="text-black"
                 >
                   {m.strCategory}
                 </Link>
@@ -37,34 +36,46 @@ export default async function MealDetailPage({ params }: MealDetailPageProps) {
             </span>
           </div>
 
-          <div className="flex flex-col items-center ">
-            <div>
-              <Image
-                src={m.strMealThumb}
-                alt={m.strMeal}
-                width={200}
-                height={200}
-                loading="eager"
-              />
-            </div>
-            <h2 className="text-xl text-center">{m.strMeal}</h2>
-            <MealTags meal={m} />
+          <div className="flex flex-col lg:flex-row w-full gap-4 mt-6">
+            <div className="flex flex-col lg:flex-1">
+              <div className="flex flex-col items-center gap-2">
+                <Image
+                  src={m.strMealThumb}
+                  alt={m.strMeal}
+                  width={500}
+                  height={500}
+                  loading="eager"
+                  className="border-3 border-black rounded-lg"
+                />
 
-            <ul className="list-decimal">
-              {m.strInstructions
-                .trim()
-                .split(".")
-                .filter((ins) => ins !== "")
-                .map((ins, i) => (
-                  <li key={i}>{ins}</li>
-                ))}
-            </ul>
-            <p>
-              Link:
-              <a href={m.strYoutube} className="underline">
-                {m.strYoutube}
-              </a>
-            </p>
+                <MealTags meal={m} />
+
+                {m.strYoutube && (
+                  <Link
+                    href={m.strYoutube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#951515] border-2 border-black px-4 py-2 text-white rounded-lg font-medium hover:bg-[#5b0f0f]"
+                  >
+                    Go to video recipe
+                  </Link>
+                )}
+              </div>
+            </div>
+
+            <section className="flex flex-col lg:flex-1 gap-4 border-3 bg-[#f6f3ee] px-4 lg:px-8 py-10 rounded-lg">
+              <h1 className="text-center">{m.strMeal}</h1>
+
+              <ul className="list-decimal list-inside">
+                {m.strInstructions
+                  .trim()
+                  .split(".")
+                  .filter((ins) => ins !== "")
+                  .map((ins, i) => (
+                    <li key={i}>{ins}</li>
+                  ))}
+              </ul>
+            </section>
           </div>
         </div>
       ))}
